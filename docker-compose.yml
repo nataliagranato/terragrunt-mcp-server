@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  terragrunt-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    image: terragrunt-mcp-server:1.0.0
+    container_name: terragrunt-mcp-server
+    restart: unless-stopped
+    
+    # Variáveis de ambiente
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+    
+    # Volumes para analisar projetos Terragrunt externos
+    volumes:
+      # Monte seu projeto Terragrunt aqui
+      - ./examples:/workspace/examples:ro
+      # Para analisar projetos externos, descomente e ajuste:
+      # - /path/to/your/terragrunt/project:/workspace/project:ro
+    
+    # Rede isolada (opcional)
+    networks:
+      - mcp-network
+    
+    # Limites de recursos
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+    
+    # Configurações de segurança
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "node", "-e", "console.log('healthy')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # Serviço opcional para desenvolvimento/debugging
+  terragrunt-mcp-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    image: terragrunt-mcp-server:dev
+    container_name: terragrunt-mcp-dev
+    profiles: ["dev"]
+    
+    environment:
+      - NODE_ENV=development
+      - LOG_LEVEL=debug
+    
+    volumes:
+      - .:/app
+      - /app/node_modules
+    
+    command: ["npm", "run", "dev"]
+    networks:
+      - mcp-network
+
+networks:
+  mcp-network:
+    driver: bridge
+    name: terragrunt-mcp-network
+
+# Volumes nomeados (opcional)
+volumes:
+  terragrunt_data:
+    driver: local
