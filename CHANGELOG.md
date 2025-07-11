@@ -5,6 +5,18 @@ Todas as mudanças notáveis ​​neste projeto serão documentadas neste arqui
 O formato é baseado em [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
 e este projeto adere a [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## 1.0.0 (2025-07-11)
+
+
+### Features
+
+* adiciona configuração de release e scripts de automação ([d9be3aa](https://github.com/nataliagranato/terragrunt-mcp-server/commit/d9be3aac6dae5250a13ccdef93213400b13d0532))
+
+
+### Bug Fixes
+
+* **ci:** update pre-commit hooks to resolve Gitleaks compilation issue ([ee7772f](https://github.com/nataliagranato/terragrunt-mcp-server/commit/ee7772f3b3b6037f42f35da38cf158de6586f671))
+
 ## [1.0.0] - 2025-07-11
 
 ### ✨ Features
