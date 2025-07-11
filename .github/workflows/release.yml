@@ -70,6 +70,7 @@ jobs:
 
       - name: Create GitHub Release
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.USER_TOKEN }}
@@ -80,6 +81,10 @@ jobs:
           draft: false
           prerelease: false
 
+      - name: Package build artifacts
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        run: tar -czvf terragrunt-mcp-server-${{ steps.changelog.outputs.version }}.tar.gz -C ./dist .
+
       - name: Upload build artifacts
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
         uses: actions/upload-release-asset@v1
@@ -87,6 +92,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.USER_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./dist
+          asset_path: ./terragrunt-mcp-server-${{ steps.changelog.outputs.version }}.tar.gz
           asset_name: terragrunt-mcp-server-${{ steps.changelog.outputs.version }}.tar.gz
           asset_content_type: application/gzip
