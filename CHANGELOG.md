@@ -1,6 +1,4 @@
-# Changelog
-
-## [1.0.2](https://github.com/nataliagranato/terragrunt-mcp-server/compare/v1.0.1...v1.0.2) (2025-07-11)
+### [1.0.3](https://github.com/nataliagranato/terragrunt-mcp-server/compare/v1.0.2...v1.0.3) (2025-07-11)
 
 
 ### Bug Fixes
@@ -19,3 +17,4 @@
 
 * Atualiza o package-lock.json ([50813e7](https://github.com/nataliagranato/terragrunt-mcp-server/commit/50813e711f92492e3b6254a0169e0a73b7fa063e))
 * **ci:** update pre-commit hooks to resolve Gitleaks compilation issue ([ee7772f](https://github.com/nataliagranato/terragrunt-mcp-server/commit/ee7772f3b3b6037f42f35da38cf158de6586f671))
+
