@@ -49,12 +49,12 @@ get_current_version() {
 bump_version() {
     local current_version="$1"
     local bump_type="$2"
-    
+
     IFS='.' read -ra VERSION_PARTS <<< "$current_version"
     local major=${VERSION_PARTS[0]}
     local minor=${VERSION_PARTS[1]}
     local patch=${VERSION_PARTS[2]}
-    
+
     case "$bump_type" in
         "major")
             major=$((major + 1))
@@ -69,7 +69,7 @@ bump_version() {
             patch=$((patch + 1))
             ;;
     esac
-    
+
     echo "${major}.${minor}.${patch}"
 }
 
@@ -101,10 +101,10 @@ build_project() {
 create_changelog_entry() {
     local version="$1"
     local date=$(date '+%Y-%m-%d')
-    
+
     # Backup do changelog atual
     cp CHANGELOG.md CHANGELOG.md.bak
-    
+
     # Criar nova entrada no changelog
     cat > temp_changelog.md << EOF
 # CHANGELOG
@@ -120,7 +120,7 @@ e este projeto adere a [Versionamento Semântico](https://semver.org/lang/pt-BR/
 - Release ${version}
 
 EOF
-    
+
     # Adicionar conteúdo existente (pular as primeiras 6 linhas do cabeçalho)
     tail -n +7 CHANGELOG.md.bak >> temp_changelog.md
     mv temp_changelog.md CHANGELOG.md
@@ -130,20 +130,20 @@ EOF
 create_git_tag() {
     local version="$1"
     local tag_name="v${version}"
-    
+
     # Commit das mudanças
     git add .
     git commit -m "chore(release): ${version}"
-    
+
     # Criar tag
     git tag -a "$tag_name" -m "Release ${version}"
-    
+
     echo -e "${GREEN}✅ Tag ${tag_name} criada!${NC}"
 }
 
 push_changes() {
     local tag_name="$1"
-    
+
     echo -e "${YELLOW}🚀 Enviando para repositório remoto...${NC}"
     git push origin main
     git push origin "$tag_name"
@@ -155,27 +155,27 @@ main() {
         show_help
         exit 0
     fi
-    
+
     local bump_type="$1"
     local custom_tag="$2"
-    
+
     # Validar tipo de bump
     if [[ ! "$bump_type" =~ ^(major|minor|patch)$ ]]; then
         echo -e "${RED}❌ Tipo de release inválido: $bump_type${NC}"
         show_help
         exit 1
     fi
-    
+
     echo -e "${BLUE}🚀 Iniciando processo de release...${NC}"
-    
+
     # Verificações
     check_git_status
-    
+
     # Obter versão atual
     local current_version
     current_version=$(get_current_version)
     echo -e "${YELLOW}📦 Versão atual: ${current_version}${NC}"
-    
+
     # Calcular nova versão
     local new_version
     if [[ -n "$custom_tag" ]]; then
@@ -183,33 +183,33 @@ main() {
     else
         new_version=$(bump_version "$current_version" "$bump_type")
     fi
-    
+
     echo -e "${YELLOW}📦 Nova versão: ${new_version}${NC}"
-    
+
     # Confirmar
     read -p "Continuar com release v${new_version}? (y/N): " confirm
     if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
         echo -e "${YELLOW}⚠️ Release cancelado.${NC}"
         exit 0
     fi
-    
+
     # Executar testes
     run_tests
-    
+
     # Fazer build
     build_project
-    
+
     # Atualizar package.json
     if [[ -f "package.json" ]]; then
         update_package_version "$new_version"
     fi
-    
+
     # Atualizar changelog
     create_changelog_entry "$new_version"
-    
+
     # Criar tag Git
     create_git_tag "$new_version"
-    
+
     # Push para repositório
     read -p "Enviar para repositório remoto? (y/N): " push_confirm
     if [[ "$push_confirm" =~ ^[Yy]$ ]]; then

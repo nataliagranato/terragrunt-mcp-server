@@ -63,7 +63,7 @@ docker run -i --rm \
 ### Ferramentas MCP Disponíveis
 - `analyze_project` - Análise completa do projeto
 - `validate_config` - Validação de configuração
-- `analyze_dependencies` - Análise de dependências  
+- `analyze_dependencies` - Análise de dependências
 - `check_security` - Verificação de segurança
 - `get_metrics` - Métricas do projeto
 - `suggest_improvements` - Sugestões de melhoria
@@ -91,7 +91,7 @@ docker run -i --rm \
 
 1. **Integrar com seu IDE preferido**
    - VS Code + extensões MCP
-   - Cursor IDE  
+   - Cursor IDE
    - Claude Desktop
 
 2. **Testar com seus projetos**

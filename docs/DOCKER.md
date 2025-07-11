@@ -91,7 +91,7 @@ Para integrar com sua IDE, configure o cliente MCP para usar o container:
     "terragrunt": {
       "command": "docker",
       "args": [
-        "exec", "-i", "terragrunt-mcp-server", 
+        "exec", "-i", "terragrunt-mcp-server",
         "node", "dist/index.js"
       ]
     }

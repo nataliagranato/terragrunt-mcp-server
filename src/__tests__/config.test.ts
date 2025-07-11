@@ -17,7 +17,7 @@ describe('ConfigAnalyzer', () => {
         terraform {
           source = "../modules/database"
         }
-        
+
         remote_state {
           backend = "s3"
           config = {
@@ -26,7 +26,7 @@ describe('ConfigAnalyzer', () => {
             region = "us-east-1"
           }
         }
-        
+
         inputs = {
           database_name = "myapp"
         }
@@ -50,7 +50,7 @@ describe('ConfigAnalyzer', () => {
         terraform {
           # Missing source
         }
-        
+
         remote_state {
           # Missing backend and config
         }
@@ -71,17 +71,17 @@ describe('ConfigAnalyzer', () => {
             const stackConfig = `
         unit "database" {
           source = "catalog://database:v1.0.0"
-          
+
           inputs = {
             instance_class = "db.t3.micro"
           }
         }
-        
+
         unit "web" {
           source = "catalog://web:v1.0.0"
-          
+
           dependencies = ["database"]
-          
+
           inputs = {
             database_endpoint = dependency.database.outputs.endpoint
           }
@@ -103,7 +103,7 @@ describe('ConfigAnalyzer', () => {
         terraform {
           source = "../modules/test"
         }
-        
+
         engine {
           type = "experimental"
         }

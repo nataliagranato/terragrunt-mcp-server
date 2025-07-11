@@ -28,7 +28,7 @@ describe('ProjectAnalyzer', () => {
         terraform {
           source = "../modules/database"
         }
-        
+
         inputs = {
           environment = "dev"
         }
@@ -76,7 +76,7 @@ describe('ProjectAnalyzer', () => {
         terraform {
           source = "git::https://github.com/org/modules.git//database?ref=v1.0.0"
         }
-        
+
         inputs = {
           database_name = "myapp"
           instance_class = "db.t3.micro"

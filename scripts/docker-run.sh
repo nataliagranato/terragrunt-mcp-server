@@ -48,21 +48,21 @@ build_image() {
 # Função para executar o servidor
 run_server() {
     log "Iniciando Terragrunt MCP Server..."
-    
+
     # Parar container existente se estiver rodando
     if docker ps -q -f name=terragrunt-mcp-server &> /dev/null; then
         warn "Parando container existente..."
         docker stop terragrunt-mcp-server &> /dev/null || true
         docker rm terragrunt-mcp-server &> /dev/null || true
     fi
-    
+
     # Executar novo container
     docker run -d \
         --name terragrunt-mcp-server \
         --restart unless-stopped \
         -v "$(pwd)/examples:/workspace/examples:ro" \
         terragrunt-mcp-server:1.0.0
-    
+
     log "✅ Servidor iniciado! Container: terragrunt-mcp-server"
 }
 
@@ -87,7 +87,7 @@ run_interactive() {
 run_example() {
     local project_path=${1:-"/workspace/examples"}
     log "Executando exemplo de análise..."
-    
+
     docker run --rm \
         -v "$(pwd)/examples:/workspace/examples:ro" \
         terragrunt-mcp-server:1.0.0 \

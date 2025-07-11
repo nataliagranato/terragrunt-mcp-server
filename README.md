@@ -139,7 +139,7 @@ git commit -m "docs: update README instructions"
 ### Tipos de Release
 
 - **patch**: Correções de bugs (`fix:`)
-- **minor**: Novas funcionalidades (`feat:`)  
+- **minor**: Novas funcionalidades (`feat:`)
 - **major**: Mudanças incompatíveis (`feat!:` ou `BREAKING CHANGE`)
 
 Para mais detalhes, consulte [docs/RELEASES.md](docs/RELEASES.md).

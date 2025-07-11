@@ -60,7 +60,7 @@ validate_type() {
 interactive_mode() {
     echo -e "${BLUE}🚀 Modo Interativo - Commit Convencional${NC}"
     echo ""
-    
+
     # Mostrar tipos disponíveis
     echo -e "${YELLOW}Tipos disponíveis:${NC}"
     for i in "${!VALID_TYPES[@]}"; do
@@ -70,7 +70,7 @@ interactive_mode() {
         printf "%2d) ${GREEN}%-10s${NC} %s\n" $((i+1)) "$type" "$desc"
     done
     echo ""
-    
+
     # Selecionar tipo
     while true; do
         read -p "Selecione o tipo (1-${#VALID_TYPES[@]}): " type_num
@@ -81,10 +81,10 @@ interactive_mode() {
             echo -e "${RED}❌ Seleção inválida. Tente novamente.${NC}"
         fi
     done
-    
+
     # Escopo (opcional)
     read -p "Escopo (opcional, ex: mcp, parser, docs): " scope
-    
+
     # Mensagem
     while true; do
         read -p "Mensagem do commit: " message
@@ -94,18 +94,18 @@ interactive_mode() {
             echo -e "${RED}❌ Mensagem não pode estar vazia.${NC}"
         fi
     done
-    
+
     # Construir mensagem de commit
     if [[ -n "$scope" ]]; then
         commit_msg="${selected_type}(${scope}): ${message}"
     else
         commit_msg="${selected_type}: ${message}"
     fi
-    
+
     echo ""
     echo -e "${YELLOW}Mensagem do commit:${NC} $commit_msg"
     echo ""
-    
+
     # Confirmar
     read -p "Confirmar commit? (y/N): " confirm
     if [[ "$confirm" =~ ^[Yy]$ ]]; then
