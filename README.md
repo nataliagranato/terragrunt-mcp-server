@@ -2,16 +2,6 @@
 
 Um servidor Model Context Protocol (MCP) especializado em análise e validação de projetos **Terragrunt 0.82.3**. Fornece análise inteligente de configurações, dependências, stacks e otimizações para projetos Terragrunt diretamente em IDEs compatíveis com MCP.
 
-## ✨ Status Final
-
-🎉 **PROJETO CONCLUÍDO COM SUCESSO!** 🎉
-
-✅ **Build**: Compila sem erros  
-✅ **Testes**: 15/15 testes passando  
-✅ **Funcionalidades**: Todas as 8 ferramentas MCP implementadas  
-✅ **Validação**: Detecta erros e features experimentais  
-✅ **Parsing**: Suporte completo a HCL Terragrunt  
-✅ **Documentação**: README e exemplos completos  
 
 ## 🛠️ Ferramentas MCP Disponíveis
 
@@ -129,6 +119,30 @@ Este servidor foi desenvolvido especificamente para **Terragrunt 0.82.3** e incl
 - Novos comandos da CLI redesenhada
 - Recursos de strict mode
 - Análise de catálogos Terragrunt
+
+## 🚀 Releases e Versionamento
+
+Este projeto utiliza [Conventional Commits](https://www.conventionalcommits.org/) e releases automáticas via GitHub Actions.
+
+### Como Contribuir com Commits
+
+```bash
+# Use o script interativo para commits
+npm run commit
+
+# Ou manualmente seguindo o padrão:
+git commit -m "feat(mcp): add new analyzer tool"
+git commit -m "fix(parser): resolve HCL parsing issue"
+git commit -m "docs: update README instructions"
+```
+
+### Tipos de Release
+
+- **patch**: Correções de bugs (`fix:`)
+- **minor**: Novas funcionalidades (`feat:`)  
+- **major**: Mudanças incompatíveis (`feat!:` ou `BREAKING CHANGE`)
+
+Para mais detalhes, consulte [docs/RELEASES.md](docs/RELEASES.md).
 
 ## 🤝 Contribuição
 

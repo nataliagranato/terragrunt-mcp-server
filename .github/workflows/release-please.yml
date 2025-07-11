@@ -1,0 +1,62 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release Please
+        uses: google-github-actions/release-please-action@v4
+        id: release
+        with:
+          release-type: node
+          package-name: terragrunt-mcp-server
+          token: ${{ secrets.USER_TOKEN }}
+
+      # Build and test only if there's a release
+      - name: Checkout code
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.USER_TOKEN }}
+
+      - name: Setup Node.js
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        if: ${{ steps.release.outputs.release_created }}
+        run: npm ci
+
+      - name: Run tests
+        if: ${{ steps.release.outputs.release_created }}
+        run: npm test
+
+      - name: Build project
+        if: ${{ steps.release.outputs.release_created }}
+        run: npm run build
+
+      - name: Create distribution archive
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          tar -czf terragrunt-mcp-server-${{ steps.release.outputs.tag_name }}.tar.gz \
+            dist/ package.json README.md LICENSE
+
+      - name: Upload Release Artifact
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.USER_TOKEN }}
+        run: |
+          gh release upload ${{ steps.release.outputs.tag_name }} \
+            terragrunt-mcp-server-${{ steps.release.outputs.tag_name }}.tar.gz
