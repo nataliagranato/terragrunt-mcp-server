@@ -5,6 +5,13 @@ Todas as mudanças notáveis ​​neste projeto serão documentadas neste arqui
 O formato é baseado em [Mantenha um Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
 e este projeto adere a [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.0.1](https://github.com/nataliagranato/terragrunt-mcp-server/compare/v1.0.0...v1.0.1) (2025-07-11)
+
+
+### Bug Fixes
+
+* Atualiza o package-lock.json ([50813e7](https://github.com/nataliagranato/terragrunt-mcp-server/commit/50813e711f92492e3b6254a0169e0a73b7fa063e))
+
 ## 1.0.0 (2025-07-11)
 
 

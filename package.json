@@ -1,6 +1,6 @@
 {
     "name": "terragrunt-mcp-server",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Model Context Protocol server especializado em Terragrunt 0.82.3 para análise de projetos e insights de infraestrutura",
     "main": "dist/index.js",
     "type": "module",
