@@ -52,7 +52,7 @@ jobs:
 
       - name: Generate changelog
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v3
+        uses: TriPSs/conventional-changelog-action@v6
         with:
           github-token: ${{ secrets.USER_TOKEN }}
           output-file: "CHANGELOG.md"
