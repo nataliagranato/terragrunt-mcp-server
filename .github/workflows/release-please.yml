@@ -24,7 +24,7 @@ jobs:
       # Build and test only if there's a release
       - name: Checkout code
         if: ${{ steps.release.outputs.release_created }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.USER_TOKEN }}
 
