@@ -1,3 +1,5 @@
+## [1.0.12](https://github.com/nataliagranato/terragrunt-mcp-server/compare/v1.0.11...v1.0.12) (2026-01-28)
+
 ## [1.0.11](https://github.com/nataliagranato/terragrunt-mcp-server/compare/v1.0.10...v1.0.11) (2026-01-27)
 
 ## [1.0.10](https://github.com/nataliagranato/terragrunt-mcp-server/compare/v1.0.9...v1.0.10) (2026-01-16)
@@ -20,9 +22,4 @@
 * **package:** atualiza o nome do pacote e adiciona configuração de publicação para o GitHub Packages ([ba14670](https://github.com/nataliagranato/terragrunt-mcp-server/commit/ba146707e4b01301713bdec41c254f9da3f3fd0f))
 
 ## [1.0.3](https://github.com/nataliagranato/terragrunt-mcp-server/compare/v1.0.2...v1.0.3) (2025-07-11)
-
-
-### Bug Fixes
-
-* **ci:** Corrige o workflow de release para fazer o upload de artefatos ([a55e03b](https://github.com/nataliagranato/terragrunt-mcp-server/commit/a55e03b1db56338bd91334523ecbbf25883b779f))
 
