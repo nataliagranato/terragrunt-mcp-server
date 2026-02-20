@@ -1,3 +1,5 @@
+## [1.0.16](https://github.com/nataliagranato/terragrunt-mcp-server/compare/v1.0.15...v1.0.16) (2026-02-20)
+
 ## [1.0.15](https://github.com/nataliagranato/terragrunt-mcp-server/compare/v1.0.14...v1.0.15) (2026-02-20)
 
 ## [1.0.14](https://github.com/nataliagranato/terragrunt-mcp-server/compare/v1.0.13...v1.0.14) (2026-02-10)
@@ -15,6 +17,4 @@
 ## [1.0.8](https://github.com/nataliagranato/terragrunt-mcp-server/compare/v1.0.7...v1.0.8) (2026-01-03)
 
 ## [1.0.7](https://github.com/nataliagranato/terragrunt-mcp-server/compare/v1.0.6...v1.0.7) (2025-12-15)
-
-## [1.0.6](https://github.com/nataliagranato/terragrunt-mcp-server/compare/v1.0.5...v1.0.6) (2025-11-18)
 
