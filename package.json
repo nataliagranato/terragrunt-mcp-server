@@ -1,6 +1,6 @@
 {
   "name": "@nataliagranato/terragrunt-mcp-server",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
